@@ -1,0 +1,53 @@
+!SESSION 2016-05-09 09:57:31.274 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -keyring /Users/klein/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.cpp.product -keyring /Users/klein/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2016-05-09 09:57:57.234
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16|lanl.gov|*.lanl.gov by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2016-05-09 09:57:57.237
+!MESSAGE System property https.proxyHost has been set to proxyout.lanl.gov by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2016-05-09 09:57:57.237
+!MESSAGE System property https.proxyPort has been set to 443 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY com.vectrace.MercurialEclipse 4 0 2016-05-09 09:58:01.084
+!MESSAGE . Command line: hg -y showconfig ui.username, error code: 1
+!STACK 1
+. Command line: hg -y showconfig ui.username, error code: 1
+	at com.vectrace.MercurialEclipse.commands.AbstractShellCommand$ProzessWrapper.checkError(AbstractShellCommand.java:217)
+	at com.vectrace.MercurialEclipse.commands.CommandJob.execute(CommandJob.java:217)
+	at com.vectrace.MercurialEclipse.commands.AbstractShellCommand.executeToStream(AbstractShellCommand.java:347)
+	at com.vectrace.MercurialEclipse.commands.AbstractShellCommand.executeToBytes(AbstractShellCommand.java:327)
+	at com.vectrace.MercurialEclipse.commands.AbstractShellCommand.executeToString(AbstractShellCommand.java:441)
+	at com.vectrace.MercurialEclipse.commands.AbstractShellCommand.executeToString(AbstractShellCommand.java:437)
+	at com.vectrace.MercurialEclipse.commands.HgConfigClient.getHgConfigLines(HgConfigClient.java:30)
+	at com.vectrace.MercurialEclipse.commands.HgConfigClient.getHgConfigLine(HgConfigClient.java:22)
+	at com.vectrace.MercurialEclipse.team.MercurialUtilities.getDefaultUserName(MercurialUtilities.java:281)
+	at com.vectrace.MercurialEclipse.preferences.PreferenceInitializer$1.run(PreferenceInitializer.java:136)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 com.vectrace.MercurialEclipse 4 1 2016-05-09 09:58:01.085
+!MESSAGE . Command line: hg -y showconfig ui.username
+
+!ENTRY com.vectrace.MercurialEclipse 1 0 2016-05-09 09:58:01.350
+!MESSAGE Autosharing RemoteSystemsTempFiles. Detected repository location: /Volumes/FastDisk/workspace1/ReadNMR_short
+!SESSION 2016-05-09 10:01:20.065 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -product org.eclipse.epp.package.cpp.product -keyring /Users/klein/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.cpp.product -data file:/Volumes/FastDisk/workspace1/ReadNMR_short/ -product org.eclipse.epp.package.cpp.product -keyring /Users/klein/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2016-05-09 10:01:24.037
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16|lanl.gov|*.lanl.gov by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2016-05-09 10:01:24.040
+!MESSAGE System property https.proxyHost has been set to proxyout.lanl.gov by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2016-05-09 10:01:24.040
+!MESSAGE System property https.proxyPort has been set to 443 by an external source. This value will be overwritten using the values from the preferences
