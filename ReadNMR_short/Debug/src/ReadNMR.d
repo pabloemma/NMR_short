@@ -1,5 +1,5 @@
 src/ReadNMR.d: ../src/ReadNMR.cpp \
-  /Volumes/FastDisk/workspace1/ReadNMR_short/include/ReadFile.h \
+  /Users/klein/git/NMR_short/ReadNMR_short/include/ReadFile.h \
   /Users/klein/root_all/include/TROOT.h \
   /Users/klein/root_all/include/TDirectory.h \
   /Users/klein/root_all/include/TNamed.h \
@@ -72,8 +72,8 @@ src/ReadNMR.d: ../src/ReadNMR.cpp \
   /Users/klein/root_all/include/ThreadLocalStorage.h \
   /Users/klein/root_all/include/RConfigure.h \
   /Users/klein/root_all/include/TVirtualTreePlayer.h \
-  /Volumes/FastDisk/workspace1/ReadNMR_short/include/ReadNMR.h \
-  /Volumes/FastDisk/workspace1/ReadNMR_short/include/Analysis.h \
+  /Users/klein/git/NMR_short/ReadNMR_short/include/ReadNMR.h \
+  /Users/klein/git/NMR_short/ReadNMR_short/include/Analysis.h \
   /Users/klein/root_all/include/TF1.h \
   /Users/klein/root_all/include/TFormula.h \
   /Users/klein/root_all/include/TBits.h \
@@ -87,7 +87,7 @@ src/ReadNMR.d: ../src/ReadNMR.cpp \
   /Users/klein/root_all/include/TApplication.h \
   /Users/klein/root_all/include/TApplicationImp.h
 
-/Volumes/FastDisk/workspace1/ReadNMR_short/include/ReadFile.h:
+/Users/klein/git/NMR_short/ReadNMR_short/include/ReadFile.h:
 
 /Users/klein/root_all/include/TROOT.h:
 
@@ -233,9 +233,9 @@ src/ReadNMR.d: ../src/ReadNMR.cpp \
 
 /Users/klein/root_all/include/TVirtualTreePlayer.h:
 
-/Volumes/FastDisk/workspace1/ReadNMR_short/include/ReadNMR.h:
+/Users/klein/git/NMR_short/ReadNMR_short/include/ReadNMR.h:
 
-/Volumes/FastDisk/workspace1/ReadNMR_short/include/Analysis.h:
+/Users/klein/git/NMR_short/ReadNMR_short/include/Analysis.h:
 
 /Users/klein/root_all/include/TF1.h:
 

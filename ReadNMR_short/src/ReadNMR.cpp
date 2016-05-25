@@ -223,13 +223,14 @@ if(OS =="WIN") {
 
     RF.DrawHisto("Foreground"); // draw histo from ReadDAta
 
-    RF.CloseFile();
+    //RF.CloseFile();
 
     //theApp->Run();
 
     theApp->Run();
 
     theApp->Terminate();
+    RF.CloseFile();
     return 0;
 
 ;
