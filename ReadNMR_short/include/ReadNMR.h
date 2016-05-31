@@ -24,12 +24,14 @@
 		std::string background ; /* indicating his to be a backgroun run */
 		std::string scale ;
 		std::string outfile ;  //root format outputfile
+		std::string dummy; // for batch argument
 
 	}globalArgs ; // currently only the gaus or lorentzian, defaults to gauss
 
 	Int_t c;
 	Int_t loop;
 	Bool_t bck;
+	Bool_t batch; // for batch operation
 	Bool_t UVa; // to control that we have a UVa file
 	Int_t signal_sign; // positive or negative
 	TString datestring; // part of the nmr file name which contains the time

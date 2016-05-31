@@ -82,7 +82,7 @@ int main(Int_t argc,char *argv[],char *envp[] ) {
 
 
     //Do not use b option since that suppresses root application drawing
-	while((   c = getopt(argc,argv,"f:t:k:i:z:y:s:u:o:h")) != -1){
+	while((   c = getopt(argc,argv,"f:t:k:i:z:y:s:u:b:o:h")) != -1){
 		cout<<char(c)<<"\n";
 		switch (c)
 
@@ -133,6 +133,13 @@ int main(Int_t argc,char *argv[],char *envp[] ) {
 				cout<<"outputfile \n";
 				globalArgs.outfile = optarg ;
 				cout<<" outputfile "<<globalArgs.outfile<<"   opt arg "<<optarg<<"\n";
+
+				break;
+			case 'b' :
+				cout<<"batch operation \n";
+				globalArgs.dummy = optarg;
+				batch = true ;
+				cout<<" We are doing batch operation \n";
 
 				break;
 			case 'u' :
@@ -208,8 +215,9 @@ if(OS =="WIN") {
 
 	//input_NMR_filename = "/Users/klein/NMR/pol_measurements/NMR3533139761.xls"; // read in the string, stupid C++ needs double quote
         Int_t *argc1;
-		TApplication *theApp = new TApplication("theApp",argc1,argv);  // problem with the two commandline args getting in conflict
+	    TApplication *theApp = new TApplication("theApp",&argc,argv);  // problem with the two commandline args getting in conflict
 		theApp->GetOptions(&argc,argv);
+
 		if(MYDEBUG){
 				cout <<"this is the input file    "<<input_NMR_filename<<" \n";
 				cout<<" this is the rootfile for the tree  "<<rootfile<<"\n\n\n";
@@ -221,16 +229,18 @@ if(OS =="WIN") {
 
     RF.ReadData(signal_sign);  // read the different spectra and put them into ROOT histo
 
-    RF.DrawHisto("Foreground"); // draw histo from ReadDAta
+    if(!batch)RF.DrawHisto("Foreground"); // draw histo from ReadDAta
 
     //RF.CloseFile();
 
     //theApp->Run();
+    if(batch)cout<< "at end \n";
+ if(!batch){
+	 theApp->Run();
+     theApp->Terminate();
+ }
 
-    theApp->Run();
-
-    theApp->Terminate();
-    RF.CloseFile();
+ 	 RF.CloseFile();
     return 0;
 
 ;
