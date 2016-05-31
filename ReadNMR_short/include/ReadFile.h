@@ -269,7 +269,7 @@ int ReadFile::ReadData(Int_t sign){
 	      fscanf(fp,"%lf ",&TuneV);
 	      fscanf(fp,"%lf ",&Offset);
 	      // cout<< FreqCenter <<"  "<< FreqStep << " "<< ScanPoints <<" "<< ScanNumber << "\n";
-
+      array.clear();
       for(Int_t loop = 0; loop<ScanPoints ; loop++){
       	fscanf(fp," %lf",&Amplitude);
 
@@ -279,6 +279,9 @@ int ReadFile::ReadData(Int_t sign){
 
       	NMR1->Fill(MinFreq+loop*FreqStep,Amplitude+BaseLineOffset);  // add an offset to correct for negative values
       	}
+
+      cout<<"size of array  "<<array.size()<<" \n";
+
         NMRtree->Fill();
   } // end of while
  // free up the space of array
