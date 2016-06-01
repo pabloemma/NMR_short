@@ -79,7 +79,7 @@ class MyRunNMR(object):
 
 
 if __name__ == '__main__':
-    a=MyRunNMR("//Volumes/FastDisk/NMR/rssmt_backup/april22/") # init system
+    a=MyRunNMR("//Volumes/FastDisk/NMR/rssmt_backup/april25/") # init system
     a.CreateFileList()
     a.Run() # execute Commands
     a.Close()
