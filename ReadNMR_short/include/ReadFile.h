@@ -195,7 +195,7 @@ int ReadFile::ReadData(Int_t sign){
     time2.erase(0,point_pos2+1);
     time1.erase(point_pos1); // problem due to stupid string read in stripped it at 10 position
     std::string time_help= time1+time2;
-    timel = std::stol(time_help)-2082844800;  // get the time base onto UNIX time
+    timel = std::stol(time_help);  // get the time base onto UNIX time
 
 
     fscanf(fp,"%lf ",&FreqCenter);
@@ -247,8 +247,8 @@ int ReadFile::ReadData(Int_t sign){
 	      time2.erase(0,point_pos2+1);
 	      time1.erase(point_pos1); // problem due to stupid string read in stripped it at 10 position
 	      std::string time_help= time1+time2;
-	      timel = std::stol(time_help)-2082844800; // Time base converted to UNIX time
-	      timel = timel - 2082844800;
+	      timel = std::stol(time_help); // Time base converted to UNIX time
+	      timel = timel ;
 	      //cout<<timel<<" timel  \n";
 
 
