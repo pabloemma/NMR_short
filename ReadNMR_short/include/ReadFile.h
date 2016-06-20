@@ -77,7 +77,7 @@ virtual ~ReadFile();
 virtual int OpenFile(TString , TString);
 virtual int CloseFile();
 virtual int ReadData(Int_t );
-TString GetDate(TString ); // determines exact date from file name according to Labview
+TString GetDate(TString, Int_t ); // determines exact date from file name according to Labview
 virtual int DrawHisto(TString);
 virtual int ScaleHisto(Double_t);
 virtual int WriteROOT(TString);
@@ -248,7 +248,11 @@ int ReadFile::ReadData(Int_t sign){
 	      time1.erase(point_pos1); // problem due to stupid string read in stripped it at 10 position
 	      std::string time_help= time1+time2;
 	      timel = std::stol(time_help); // Time base converted to UNIX time
+
+
+
 	      timel = timel ;
+
 	      //cout<<timel<<" timel  \n";
 
 
@@ -316,7 +320,7 @@ else
  return NumberOfSpectra;
 }
 
-TString ReadFile::GetDate(TString input) {
+TString ReadFile::GetDate(TString input, Int_t Control) {
 
 
 	TString timestring = input;
@@ -331,9 +335,9 @@ TString ReadFile::GetDate(TString input) {
        cout << 1 + ltm->tm_min << ":";
        cout << 1 + ltm->tm_sec << endl;
 
-      cout<<asctime(ltm)<< " \n";
+      cout<<asctime(ltm)<<"  "<<time_test<<"   "<<"    \n";
       cout<<" \n \n ******************************************\n\n";
-
+      if(time_test>1466100497) Control =1; // this gives a control value for which time the polarization file is from
       return  asctime(ltm);
 }
 int ReadFile::DrawHisto(TString HistoTitle){

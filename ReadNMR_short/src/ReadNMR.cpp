@@ -1,4 +1,5 @@
 //============================================================================
+///============================================================================
 // Name        : ReadNMR.cpp
 // Author      : andi klein
 // Version     :
@@ -225,9 +226,17 @@ if(OS =="WIN") {
 
 	RF.OpenFile(input_NMR_filename,rootfile); // pass filename as a const char *
 
-    RF.GetDate(datestring);  // returns exact date of run from name
+    RF.GetDate(datestring,read_control);  // returns exact date of run from name
 
+
+    switch (read_control) {
+    case 0:
     RF.ReadData(signal_sign);  // read the different spectra and put them into ROOT histo
+    break;
+    case 1:
+    RF.ReadData(signal_sign);  // read the different spectra and put them into ROOT histo
+    break;
+    }
 
     if(!batch)RF.DrawHisto("Foreground"); // draw histo from ReadDAta
 

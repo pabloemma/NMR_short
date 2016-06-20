@@ -30,6 +30,7 @@
 
 	Int_t c;
 	Int_t loop;
+	Int_t read_control;
 	Bool_t bck;
 	Bool_t batch; // for batch operation
 	Bool_t UVa; // to control that we have a UVa file
