@@ -42,7 +42,7 @@
 	TString inputfile ="NMR" ; // beginning of filename
 	TString directory; // string for data directory
 	TString inputdate ; // the part of the inputfile which is 10 charactesr and conatins the date and time
-	TString inputend =".xls";
+	TString inputend =".csv";
 	TString inputfilename; // inpiut for foreground spectrum
 	TString in_src = ""; // the filename without extension but directory etc
 	TString inputfilename_bck; // inpiut for background spectrum

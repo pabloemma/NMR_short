@@ -20,6 +20,7 @@
 #include "Analysis.h"
 #include "TString.h"
 #include "TApplication.h"
+#include <stdio.h>
 
 
 
@@ -173,7 +174,7 @@ int main(Int_t argc,char *argv[],char *envp[] ) {
     	 directory = "/Users/klein/NMR/pol_measurements/";
     }
 
-    TString file_start ="NMR";
+    TString file_start ="POL";
 
      in_src = directory+file_start+globalArgs.input;
 
@@ -226,10 +227,11 @@ if(OS =="WIN") {
 
 	RF.OpenFile(input_NMR_filename,rootfile); // pass filename as a const char *
 
-    RF.GetDate(datestring,read_control);  // returns exact date of run from name
+    RF.GetDate(datestring);  // returns exact date of run from name
+    RF.ReadData(signal_sign);  // read the different spectra and put them into ROOT histo
 
 
-    switch (read_control) {
+/*    switch (read_control) {
     case 0:
     RF.ReadData(signal_sign);  // read the different spectra and put them into ROOT histo
     break;
@@ -237,7 +239,7 @@ if(OS =="WIN") {
     RF.ReadData(signal_sign);  // read the different spectra and put them into ROOT histo
     break;
     }
-
+*/
     if(!batch)RF.DrawHisto("Foreground"); // draw histo from ReadDAta
 
     //RF.CloseFile();
