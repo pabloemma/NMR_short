@@ -31,7 +31,7 @@ public:
 	FILE *fp;
 	// Read the firts block
 	// according to Pat the format is
-	char Header_Line[10][100]; // curently the header buffer can be 10 lines long with 100 characters
+	char Header_Line[20][100]; // curently the header buffer can be 10 lines long with 100 characters
 	char timec1[5];
 	char timec2[10];
 
@@ -55,6 +55,8 @@ public:
 	Double_t Gain; // Gainsetting 0:low, 1:medium, 2:high
 	Double_t Pol_Sign;// 0 if no invert, 1 if signal is inverted
 	Double_t Log_Channel;// 1 if we are using log amp
+	Double_t Peak_Amp;//
+	Double_t ph1,ph2,ph3,ph4,ph5,ph6,ph7; // Double precision placeholders if we ant more info to the sweeps later
 
 
 
@@ -108,8 +110,14 @@ virtual int MakeTree();
 #ifdef ReadFile_cxx
 
 ReadFile::ReadFile(){
-	Header_Buffer_Length = 5;  // length of Header buffer in lines
-}
+
+
+
+	}
+
+
+
+
 
 
 //int ReadFile::OpenFile(const char * input_NMR_filename){
@@ -186,6 +194,24 @@ int ReadFile::MakeTree(){
 		 	 	 NMRtree->Branch("Log_Channel",&Log_Channel,"Log_Channel/D");
 
 	      }
+	      if(Control ==1){
+		 	 	 NMRtree->Branch("Phase_Voltage",&Phase_Voltage,"Phase_Voltage/D");
+		 	 	 NMRtree->Branch("Peak_Area",&Peak_Area,"Peak_Area/D");
+		 	 	 NMRtree->Branch("Pol_Calib_Const",&Pol_Calib_Const,"Pol_Calib_Const/D");
+		 	 	 NMRtree->Branch("Gain",&Gain,"Gain/D");
+		 	 	 NMRtree->Branch("Pol_Sign",&Pol_Sign,"Pol_Sign/D");
+		 	 	 NMRtree->Branch("Log_Channel",&Log_Channel,"Log_Channel/D");
+		 	 	 NMRtree->Branch("Peak_Amp",&Peak_Amp,"Peak_Amp/D");
+		 	 	 NMRtree->Branch("ph1",&ph1,"ph1/D");
+		 	 	 NMRtree->Branch("ph2",&ph2,"ph2/D");
+		 	 	 NMRtree->Branch("ph3",&ph3,"ph3/D");
+		 	 	 NMRtree->Branch("ph4",&ph4,"ph4/D");
+		 	 	 NMRtree->Branch("ph5",&ph5,"ph5/D");
+		 	 	 NMRtree->Branch("ph6",&ph6,"ph6/D");
+		 	 	 NMRtree->Branch("ph7",&ph7,"ph7/D");
+
+
+	      }
 
 
 
@@ -206,22 +232,21 @@ int ReadFile::ReadData(Int_t sign){
 	FitLimit = 10; //    number of FreqStep below and above frequency center
 
 	NumberOfSpectra =0; // number of spectra in file
-	cout<<"in readdata \n";
-
 	// read header first
-	if(Control==1){
+	if(Control>0){
 	for(Header_Buffer=0; Header_Buffer < Header_Buffer_Length;Header_Buffer++ ){
 
 		fgets(Header_Line[Header_Buffer],100,fp);
-		puts(Header_Line[Header_Buffer]);
+		cout<<"test"<<Header_Line[Header_Buffer]<<"  "<<Header_Buffer<<"\n";
+//		puts(Header_Line[Header_Buffer]);
 	}
 	}
+	cout<< "after string read \n";
     fscanf(fp,"%s",timec1);
 
     fscanf(fp,"%s",timec2);
     time1=string(timec1);
     time2=string(timec2);
-    //cout<< timec1<<"   "<<timec2<<" times \n";
     // now remove the . if there is one, concatenate the times, we have now down to 100 musecs involved
     Int_t point_pos2 = time2.find(".");
     Int_t point_pos1 = time1.find(".");
@@ -245,7 +270,6 @@ int ReadFile::ReadData(Int_t sign){
     fscanf(fp,"%lf ",&ControllerV);
     fscanf(fp,"%lf ",&TuneV);
     fscanf(fp,"%lf ",&Offset);
-    cout<<" control is "<<Control<<"\n";
 
     if(Control ==1){
 	      fscanf(fp,"%lf ",&Phase_Voltage);
@@ -255,8 +279,25 @@ int ReadFile::ReadData(Int_t sign){
 	      fscanf(fp,"%lf ",&Pol_Sign); // 0 if not inverted 1, if inverted
 	      fscanf(fp,"%lf ",&Log_Channel);
   }
+    if(Control ==2){
+	      fscanf(fp,"%lf ",&Phase_Voltage);
+	      fscanf(fp,"%lf ",&Peak_Area);
+	      fscanf(fp,"%lf ",&Pol_Calib_Const);
+	      fscanf(fp,"%lf ",&Gain);
+	      fscanf(fp,"%lf ",&Pol_Sign); // 0 if not inverted 1, if inverted
+	      fscanf(fp,"%lf ",&Log_Channel);
+	      fscanf(fp,"%lf ",&Peak_Amp);
+	      fscanf(fp,"%lf ",&ph1);   // ph1 stands for placeholder
+	      fscanf(fp,"%lf ",&ph2);
+	      fscanf(fp,"%lf ",&ph3);   // ph1 stands for placeholder
+	      fscanf(fp,"%lf ",&ph4);
+	      fscanf(fp,"%lf ",&ph5);   // ph1 stands for placeholder
+	      fscanf(fp,"%lf ",&ph6);
+	      fscanf(fp,"%lf ",&ph7);   // ph1 stands for placeholder
 
-    cout<< FreqCenter <<"  "<< FreqStep << " "<< ScanPoints <<" "<< ScanNumber << "\n";
+    	  }
+
+ //   cout<< FreqCenter <<"  "<< FreqStep << " "<< ScanPoints <<" "<< ScanNumber << "\n";
 
 // histo limits
  Double_t MinFreq = FreqCenter - (ScanPoints-1)/2 * FreqStep;
@@ -283,8 +324,8 @@ int ReadFile::ReadData(Int_t sign){
  // Labview, when it swicthes to text output adds a \r\n to the line. C++ interprets this as a new line.
  Int_t read_header =1;  // this is to take care of the supid Labview extrca character for asii in the middle of the data stream.
  while (1) {
-	 	 if(Control==1){
-	 		 if (read_header >1)Header_Buffer_Length=6;
+	 	 if(Control >0){
+	 		 if (read_header >1)Header_Buffer_Length +=1;
    	 		for(Header_Buffer=0; Header_Buffer < Header_Buffer_Length;Header_Buffer++ ){
 	 			fgets(Header_Line[Header_Buffer],100,fp);
 	 		}
@@ -302,27 +343,21 @@ int ReadFile::ReadData(Int_t sign){
 	      // now remove the . if there is one, concatenate the times, we have now down to 100 musecs involved
 	      Int_t point_pos2 = time2.find(".");
 	      Int_t point_pos1 = time1.find(".");
-	      cout<<NumberOfSpectra<<" \n";
-	      cout<<time2<<"  "<<time1<<"\n";
 	      time2.erase(0,point_pos2+1);
 	      time1.erase(point_pos1); // problem due to stupid string read in stripped it at 10 position
 	      std::string time_help= time1+time2;
-	      cout<<time1<<"   "<<time2<<"   "<<time_help<<"\n";
 	      timel = std::stol(time_help); // Time base converted to UNIX time
-	      cout<<NumberOfSpectra<<"3 \n";
 
 
 
-	      timel = timel ;
-
-	      //cout<<timel<<" timel  \n";
+	      //timel = timel ;
 
 
 
 
 
        fscanf(fp,"%lf ",&FreqCenter);
-       FreqCenter = FreqCenter;
+       //FreqCenter = FreqCenter;
     // three more headerlines
       fscanf(fp,"%lf ",&FreqStep);
       fscanf(fp,"%lf ",&ScanPoints);
@@ -342,26 +377,38 @@ int ReadFile::ReadData(Int_t sign){
 		      fscanf(fp,"%lf ",&Gain);
 		      fscanf(fp,"%lf ",&Pol_Sign); // 0 if not inverted 1, if inverted
 		      fscanf(fp,"%lf ",&Log_Channel);
-	    }
+	      	  }
+	      if(Control ==2){
+		      fscanf(fp,"%lf ",&Phase_Voltage);
+		      fscanf(fp,"%lf ",&Peak_Area);
+		      fscanf(fp,"%lf ",&Pol_Calib_Const);
+		      fscanf(fp,"%lf ",&Gain);
+		      fscanf(fp,"%lf ",&Pol_Sign); // 0 if not inverted 1, if inverted
+		      fscanf(fp,"%lf ",&Log_Channel);
+		      fscanf(fp,"%lf ",&Peak_Amp);
+		      fscanf(fp,"%lf ",&ph1);   // ph1 stands for placeholder
+		      fscanf(fp,"%lf ",&ph2);
+		      fscanf(fp,"%lf ",&ph3);   // ph1 stands for placeholder
+		      fscanf(fp,"%lf ",&ph4);
+		      fscanf(fp,"%lf ",&ph5);   // ph1 stands for placeholder
+		      fscanf(fp,"%lf ",&ph6);
+		      fscanf(fp,"%lf ",&ph7);   // ph1 stands for placeholder
+
+	      	  }
 
 
 
-	       cout<< FreqCenter <<"  "<< FreqStep << " "<< ScanPoints <<" "<< ScanNumber << "\n";
-	       cout<<timel<<"  "<<Phase_Voltage<<Log_Channel<<" \n";
+//	       cout<< FreqCenter <<"  "<< FreqStep << " "<< ScanPoints <<" "<< ScanNumber << "\n";
       array.clear();  // so we do not create a long array, set everything to zero length
-      cout<<NumberOfSpectra<<" \n";
-      for(Int_t loop = 0; loop<ScanPoints+1 ; loop++){
+       for(Int_t loop = 0; loop<ScanPoints+1 ; loop++){
       	fscanf(fp," %lf",&Amplitude);
-      	cout<<Amplitude<<"   "<<loop<<"\n";
       	array.push_back(Amplitude);  //put signal into vector
-      	//cout<<array.at(loop)<<" arra \n";
 
       	Amplitude = Amplitude * sign; // to take care of negative signal
 
       	NMR1->Fill(MinFreq+loop*FreqStep,Amplitude+BaseLineOffset);  // add an offset to correct for negative values
       	}
 
-      //cout<<"size of array  "<<array.size()<<" \n";
 
         NMRtree->Fill();
   } // end of while
@@ -414,8 +461,26 @@ TString ReadFile::GetDate(TString input) {
 
       cout<<asctime(ltm)<<"  "<<time_test<<"   "<<"    \n";
       cout<<" \n \n ******************************************\n\n";
-      if(Int_t(time_test) > 1465948800) Control =1; // this gives a control value for which time the polarization file is from
+      if(Int_t(time_test) > 1465948800 && Int_t(time_test) <= 1468972800 ) Control =1; // this gives a control value for which time the polarization file is from
+      if(Int_t(time_test) > 1468972800 ) Control =2; // this gives a control value for which time the polarization file is from
+
       cout<<" control next"<<Control<<"\n";
+  	// this header is for controlling the header buffer length
+  	switch (Control)
+  	{
+  	case 1:
+
+  	Header_Buffer_Length = 5;  // length of Header buffer in lines
+  	break;
+  	case 2:
+  	Header_Buffer_Length = 10;  // length of Header buffer in lines
+  	break;
+
+  	default:
+  	break;
+
+  	}
+
       return  asctime(ltm);
 }
 int ReadFile::DrawHisto(TString HistoTitle){

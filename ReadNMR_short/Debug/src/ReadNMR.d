@@ -5,6 +5,7 @@ src/ReadNMR.d: ../src/ReadNMR.cpp \
   /Users/klein/root_all/include/TNamed.h \
   /Users/klein/root_all/include/TObject.h \
   /Users/klein/root_all/include/Rtypes.h \
+  /Users/klein/root_all/include/RtypesCore.h \
   /Users/klein/root_all/include/RConfig.h \
   /Users/klein/root_all/include/RVersion.h \
   /Users/klein/root_all/include/DllImport.h \
@@ -19,6 +20,8 @@ src/ReadNMR.d: ../src/ReadNMR.cpp \
   /Users/klein/root_all/include/TBuffer.h \
   /Users/klein/root_all/include/TString.h \
   /Users/klein/root_all/include/TMathBase.h \
+  /Users/klein/root_all/include/RStringView.h \
+  /Users/klein/root_all/include/RConfigure.h \
   /Users/klein/root_all/include/TList.h \
   /Users/klein/root_all/include/TSeqCollection.h \
   /Users/klein/root_all/include/TCollection.h \
@@ -56,6 +59,13 @@ src/ReadNMR.d: ../src/ReadNMR.cpp \
   /Users/klein/root_all/include/GuiTypes.h \
   /Users/klein/root_all/include/Buttons.h \
   /Users/klein/root_all/include/TQObject.h \
+  /Users/klein/root_all/include/TQObjectEmitVA.h \
+  /Users/klein/root_all/include/TQConnection.h \
+  /Users/klein/root_all/include/Varargs.h \
+  /Users/klein/root_all/include/TInterpreter.h \
+  /Users/klein/root_all/include/TDictionary.h \
+  /Users/klein/root_all/include/ESTLType.h \
+  /Users/klein/root_all/include/TVirtualMutex.h \
   /Users/klein/root_all/include/TAttBBox2D.h \
   /Users/klein/root_all/include/TPoint.h \
   /Users/klein/root_all/include/TAttCanvas.h \
@@ -64,19 +74,16 @@ src/ReadNMR.d: ../src/ReadNMR.cpp \
   /Users/klein/root_all/include/TBranch.h \
   /Users/klein/root_all/include/TObjArray.h \
   /Users/klein/root_all/include/TDataType.h \
-  /Users/klein/root_all/include/TDictionary.h \
-  /Users/klein/root_all/include/Property.h \
-  /Users/klein/root_all/include/ESTLType.h \
   /Users/klein/root_all/include/TClass.h \
   /Users/klein/root_all/include/TObjString.h \
   /Users/klein/root_all/include/ThreadLocalStorage.h \
-  /Users/klein/root_all/include/RConfigure.h \
   /Users/klein/root_all/include/TVirtualTreePlayer.h \
   /Users/klein/git/NMR_short/ReadNMR_short/include/ReadNMR.h \
   /Users/klein/git/NMR_short/ReadNMR_short/include/Analysis.h \
   /Users/klein/root_all/include/TF1.h \
   /Users/klein/root_all/include/TFormula.h \
   /Users/klein/root_all/include/TBits.h \
+  /Users/klein/root_all/include/TMethodCall.h \
   /Users/klein/root_all/include/Math/ParamFunctor.h \
   /Users/klein/root_all/include/TMath.h \
   /Users/klein/root_all/include/TError.h \
@@ -98,6 +105,8 @@ src/ReadNMR.d: ../src/ReadNMR.cpp \
 /Users/klein/root_all/include/TObject.h:
 
 /Users/klein/root_all/include/Rtypes.h:
+
+/Users/klein/root_all/include/RtypesCore.h:
 
 /Users/klein/root_all/include/RConfig.h:
 
@@ -126,6 +135,10 @@ src/ReadNMR.d: ../src/ReadNMR.cpp \
 /Users/klein/root_all/include/TString.h:
 
 /Users/klein/root_all/include/TMathBase.h:
+
+/Users/klein/root_all/include/RStringView.h:
+
+/Users/klein/root_all/include/RConfigure.h:
 
 /Users/klein/root_all/include/TList.h:
 
@@ -201,6 +214,20 @@ src/ReadNMR.d: ../src/ReadNMR.cpp \
 
 /Users/klein/root_all/include/TQObject.h:
 
+/Users/klein/root_all/include/TQObjectEmitVA.h:
+
+/Users/klein/root_all/include/TQConnection.h:
+
+/Users/klein/root_all/include/Varargs.h:
+
+/Users/klein/root_all/include/TInterpreter.h:
+
+/Users/klein/root_all/include/TDictionary.h:
+
+/Users/klein/root_all/include/ESTLType.h:
+
+/Users/klein/root_all/include/TVirtualMutex.h:
+
 /Users/klein/root_all/include/TAttBBox2D.h:
 
 /Users/klein/root_all/include/TPoint.h:
@@ -217,19 +244,11 @@ src/ReadNMR.d: ../src/ReadNMR.cpp \
 
 /Users/klein/root_all/include/TDataType.h:
 
-/Users/klein/root_all/include/TDictionary.h:
-
-/Users/klein/root_all/include/Property.h:
-
-/Users/klein/root_all/include/ESTLType.h:
-
 /Users/klein/root_all/include/TClass.h:
 
 /Users/klein/root_all/include/TObjString.h:
 
 /Users/klein/root_all/include/ThreadLocalStorage.h:
-
-/Users/klein/root_all/include/RConfigure.h:
 
 /Users/klein/root_all/include/TVirtualTreePlayer.h:
 
@@ -242,6 +261,8 @@ src/ReadNMR.d: ../src/ReadNMR.cpp \
 /Users/klein/root_all/include/TFormula.h:
 
 /Users/klein/root_all/include/TBits.h:
+
+/Users/klein/root_all/include/TMethodCall.h:
 
 /Users/klein/root_all/include/Math/ParamFunctor.h:
 

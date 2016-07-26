@@ -28,6 +28,7 @@
 								</option>
 								<option id="gnu.c.compiler.option.dialect.std.586405064" name="Language standard" superClass="gnu.c.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.c.compiler.dialect.default" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.optimization.flags.1899508435" name="Other optimization flags" superClass="gnu.c.compiler.option.optimization.flags" useByScannerDiscovery="false" value="" valueType="string"/>
+								<option id="gnu.c.compiler.option.misc.other.956890735" name="Other flags" superClass="gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="-c -fmessage-length=0 -std=c++11" valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.348533288" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.279284" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
@@ -38,6 +39,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ReadNMR_short/include}&quot;"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.optimization.flags.55247359" name="Other optimization flags" superClass="gnu.cpp.compiler.option.optimization.flags" useByScannerDiscovery="false" value="" valueType="string"/>
+								<option id="gnu.cpp.compiler.option.other.other.840287962" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" useByScannerDiscovery="false" value="-c -fmessage-length=0 -std=c++11" valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.642496336" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cross.c.linker.205284760" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker"/>
@@ -46,7 +48,9 @@
 									<listOptionValue builtIn="false" value="/Users/klein/root_all/lib"/>
 									<listOptionValue builtIn="false" value="/usr/lib"/>
 								</option>
-								<option id="gnu.cpp.link.option.other.2053644758" name="Other options (-Xlinker [option])" superClass="gnu.cpp.link.option.other"/>
+								<option id="gnu.cpp.link.option.other.2053644758" name="Other options (-Xlinker [option])" superClass="gnu.cpp.link.option.other" valueType="stringList">
+									<listOptionValue builtIn="false" value="-rpath /Users/klein/root_all/lib"/>
+								</option>
 								<option id="gnu.cpp.link.option.flags.1639985162" name="Linker flags" superClass="gnu.cpp.link.option.flags" value=" `/Users/klein/root_all/bin/root-config --libs`" valueType="string"/>
 								<option id="gnu.cpp.link.option.libs.822020306" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="c++"/>

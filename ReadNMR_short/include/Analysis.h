@@ -39,7 +39,7 @@ public:
 	TF1 *Signal;
 	// spectrum finder
 	Int_t npeaks;	//number of peaks to find
-	Float_t *xpeaks; // xpositions of peaks
+	Double_t *xpeaks; // xpositions of peaks
 	Float_t sigma; // sigma for peak search
 	Double_t amplitude;// amplitude from peak serach
 	Double_t par[3];
