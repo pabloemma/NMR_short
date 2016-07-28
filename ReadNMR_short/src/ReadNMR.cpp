@@ -174,7 +174,7 @@ int main(Int_t argc,char *argv[],char *envp[] ) {
     	 directory = "/Users/klein/NMR/pol_measurements/";
     }
 
-    TString file_start ="POL";
+    TString file_start ="TEQ";
 
      in_src = directory+file_start+globalArgs.input;
 
