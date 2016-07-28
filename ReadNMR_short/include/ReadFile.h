@@ -32,8 +32,8 @@ public:
 	// Read the firts block
 	// according to Pat the format is
 	char Header_Line[20][100]; // curently the header buffer can be 10 lines long with 100 characters
-	char timec1[5];
-	char timec2[10];
+	char timec1[11];
+	char timec2[11];
 
 	std::string time1;
 	std::string time2; // for time stamp. is the sum of both.
@@ -325,7 +325,7 @@ int ReadFile::ReadData(Int_t sign){
  Int_t read_header =1;  // this is to take care of the supid Labview extrca character for asii in the middle of the data stream.
  while (1) {
 	 	 if(Control >0){
-	 		 if (read_header >1)Header_Buffer_Length +=1;
+	 		 if (read_header >1)Header_Buffer_Length;
    	 		for(Header_Buffer=0; Header_Buffer < Header_Buffer_Length;Header_Buffer++ ){
 	 			fgets(Header_Line[Header_Buffer],100,fp);
 	 		}
