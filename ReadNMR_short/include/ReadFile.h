@@ -194,7 +194,7 @@ int ReadFile::MakeTree(){
 		 	 	 NMRtree->Branch("Log_Channel",&Log_Channel,"Log_Channel/D");
 
 	      }
-	      if(Control ==1){
+	      if(Control ==2){
 		 	 	 NMRtree->Branch("Phase_Voltage",&Phase_Voltage,"Phase_Voltage/D");
 		 	 	 NMRtree->Branch("Peak_Area",&Peak_Area,"Peak_Area/D");
 		 	 	 NMRtree->Branch("Pol_Calib_Const",&Pol_Calib_Const,"Pol_Calib_Const/D");
