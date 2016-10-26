@@ -56,7 +56,15 @@ public:
 	Double_t Pol_Sign;// 0 if no invert, 1 if signal is inverted
 	Double_t Log_Channel;// 1 if we are using log amp
 	Double_t Peak_Amp;//
-	Double_t ph1,ph2,ph3,ph4,ph5,ph6,ph7; // Double precision placeholders if we ant more info to the sweeps later
+	Double_t NMRchan; // whci coil
+	Double_t PeakCenter ;//
+	Double_t BeamOn;//
+	Double_t RFlevel;//
+	Double_t IFatt; //
+
+
+
+	Double_t ph1,ph2; // Double precision placeholders if we ant more info to the sweeps later
 
 
 
@@ -202,13 +210,15 @@ int ReadFile::MakeTree(){
 		 	 	 NMRtree->Branch("Pol_Sign",&Pol_Sign,"Pol_Sign/D");
 		 	 	 NMRtree->Branch("Log_Channel",&Log_Channel,"Log_Channel/D");
 		 	 	 NMRtree->Branch("Peak_Amp",&Peak_Amp,"Peak_Amp/D");
+
+		 	 	 NMRtree->Branch("NMRchan",&NMRchan,"NMRchan/D");
+		 	 	 NMRtree->Branch("PeakCenter",&PeakCenter,"PeakCenter/D");
+		 	 	 NMRtree->Branch("BeamOn",&BeamOn,"BeamOn/D");
+		 	 	 NMRtree->Branch("RFlevel",&RFlevel,"RFlevel/D");
+		 	 	 NMRtree->Branch("IFatt",&IFatt,"IFatt/D");
+
 		 	 	 NMRtree->Branch("ph1",&ph1,"ph1/D");
 		 	 	 NMRtree->Branch("ph2",&ph2,"ph2/D");
-		 	 	 NMRtree->Branch("ph3",&ph3,"ph3/D");
-		 	 	 NMRtree->Branch("ph4",&ph4,"ph4/D");
-		 	 	 NMRtree->Branch("ph5",&ph5,"ph5/D");
-		 	 	 NMRtree->Branch("ph6",&ph6,"ph6/D");
-		 	 	 NMRtree->Branch("ph7",&ph7,"ph7/D");
 
 
 	      }
@@ -287,13 +297,13 @@ int ReadFile::ReadData(Int_t sign){
 	      fscanf(fp,"%lf ",&Pol_Sign); // 0 if not inverted 1, if inverted
 	      fscanf(fp,"%lf ",&Log_Channel);
 	      fscanf(fp,"%lf ",&Peak_Amp);
+	      fscanf(fp,"%lf ",&NMRchan);   // ph1 stands for placeholder
+	      fscanf(fp,"%lf ",&PeakCenter);
+	      fscanf(fp,"%lf ",&BeamOn);   // ph1 stands for placeholder
+	      fscanf(fp,"%lf ",&RFlevel);
+	      fscanf(fp,"%lf ",&IFatt);   // ph1 stands for placeholder
 	      fscanf(fp,"%lf ",&ph1);   // ph1 stands for placeholder
 	      fscanf(fp,"%lf ",&ph2);
-	      fscanf(fp,"%lf ",&ph3);   // ph1 stands for placeholder
-	      fscanf(fp,"%lf ",&ph4);
-	      fscanf(fp,"%lf ",&ph5);   // ph1 stands for placeholder
-	      fscanf(fp,"%lf ",&ph6);
-	      fscanf(fp,"%lf ",&ph7);   // ph1 stands for placeholder
 
     	  }
 
@@ -386,13 +396,13 @@ int ReadFile::ReadData(Int_t sign){
 		      fscanf(fp,"%lf ",&Pol_Sign); // 0 if not inverted 1, if inverted
 		      fscanf(fp,"%lf ",&Log_Channel);
 		      fscanf(fp,"%lf ",&Peak_Amp);
+		      fscanf(fp,"%lf ",&NMRchan);   // ph1 stands for placeholder
+		      fscanf(fp,"%lf ",&PeakCenter);
+		      fscanf(fp,"%lf ",&BeamOn);   // ph1 stands for placeholder
+		      fscanf(fp,"%lf ",&RFlevel);
+		      fscanf(fp,"%lf ",&IFatt);   // ph1 stands for placeholder
 		      fscanf(fp,"%lf ",&ph1);   // ph1 stands for placeholder
 		      fscanf(fp,"%lf ",&ph2);
-		      fscanf(fp,"%lf ",&ph3);   // ph1 stands for placeholder
-		      fscanf(fp,"%lf ",&ph4);
-		      fscanf(fp,"%lf ",&ph5);   // ph1 stands for placeholder
-		      fscanf(fp,"%lf ",&ph6);
-		      fscanf(fp,"%lf ",&ph7);   // ph1 stands for placeholder
 
 	      	  }
 
