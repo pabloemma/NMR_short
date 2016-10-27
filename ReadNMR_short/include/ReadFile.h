@@ -64,7 +64,8 @@ public:
 
 
 
-	Double_t ph1,ph2; // Double precision placeholders if we ant more info to the sweeps later
+	Double_t HeT; // calculated from baratron presure
+	Double_t HeP; // Helium Pressures
 
 
 
@@ -217,8 +218,8 @@ int ReadFile::MakeTree(){
 		 	 	 NMRtree->Branch("RFlevel",&RFlevel,"RFlevel/D");
 		 	 	 NMRtree->Branch("IFatt",&IFatt,"IFatt/D");
 
-		 	 	 NMRtree->Branch("ph1",&ph1,"ph1/D");
-		 	 	 NMRtree->Branch("ph2",&ph2,"ph2/D");
+		 	 	 NMRtree->Branch("HeT",&HeT,"HeT/D");
+		 	 	 NMRtree->Branch("HeP",&HeP,"HeP/D");
 
 
 	      }
@@ -302,8 +303,8 @@ int ReadFile::ReadData(Int_t sign){
 	      fscanf(fp,"%lf ",&BeamOn);   // ph1 stands for placeholder
 	      fscanf(fp,"%lf ",&RFlevel);
 	      fscanf(fp,"%lf ",&IFatt);   // ph1 stands for placeholder
-	      fscanf(fp,"%lf ",&ph1);   // ph1 stands for placeholder
-	      fscanf(fp,"%lf ",&ph2);
+	      fscanf(fp,"%lf ",&HeT);   // ph1 stands for placeholder
+	      fscanf(fp,"%lf ",&HeP);
 
     	  }
 
@@ -401,8 +402,8 @@ int ReadFile::ReadData(Int_t sign){
 		      fscanf(fp,"%lf ",&BeamOn);   // ph1 stands for placeholder
 		      fscanf(fp,"%lf ",&RFlevel);
 		      fscanf(fp,"%lf ",&IFatt);   // ph1 stands for placeholder
-		      fscanf(fp,"%lf ",&ph1);   // ph1 stands for placeholder
-		      fscanf(fp,"%lf ",&ph2);
+		      fscanf(fp,"%lf ",&HeT);   // ph1 stands for placeholder
+		      fscanf(fp,"%lf ",&HeP);
 
 	      	  }
 
