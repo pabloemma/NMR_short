@@ -104,7 +104,7 @@ int main(Int_t argc,char *argv[],char *envp[] ) {
 
 			case 'i' :
 				globalArgs.input = optarg ;
-				datestring = globalArgs.input;
+				//datestring = globalArgs.input;
 				cout<<" Input file "<<globalArgs.input<<"\n";
 
 				break;
@@ -174,9 +174,10 @@ int main(Int_t argc,char *argv[],char *envp[] ) {
     	 directory = "/Users/klein/NMR/pol_measurements/";
     }
 
-    TString file_start ="TEQ";
+     //TString file_start ="TEQ";
 
-     in_src = directory+file_start+globalArgs.input;
+    //in_src = directory+file_start+globalArgs.input;
+    in_src = directory+globalArgs.input;
 
      outputfilename = in_src+ outputend;
      inputfilename = in_src + inputend;
@@ -226,6 +227,12 @@ if(OS =="WIN") {
 		}
 
 	RF.OpenFile(input_NMR_filename,rootfile); // pass filename as a const char *
+
+
+	// Create date string from input name in globalArgs.input
+	// strip first three characters:
+	datestring = globalArgs.input.erase(0,3); //erase 3 characters starting at 0
+
 
     RF.GetDate(datestring);  // returns exact date of run from name
     RF.ReadData(signal_sign);  // read the different spectra and put them into ROOT histo
