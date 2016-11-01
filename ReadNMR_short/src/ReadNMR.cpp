@@ -181,7 +181,7 @@ int main(Int_t argc,char *argv[],char *envp[] ) {
 
      outputfilename = in_src+ outputend;
      inputfilename = in_src + inputend;
-     rootfile = in_src + rootend; //this is the rootfile containg the tree
+     rootfile = directory+"/root/"+globalArgs.input + rootend; //this is the rootfile containg the tree
 
 	 input_NMR_filename =inputfilename;
 

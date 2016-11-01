@@ -142,6 +142,8 @@ ReadFile::ReadFile(){
 		   cout<<" Cannot find file "<<input_NMR_filename<<"  will exit \n";
 		   return 0;
 	   }
+	   // add a fowrad slash to beginning
+	   root_tree_file ='/'+root_tree_file;
 	   cout <<"opening new root file   "<<root_tree_file<<"\n";
 	  // RootFile = new TFile(root_tree_file,"RECREATE"); //overwrite existing file
 	   RootFile = new TFile(root_tree_file,"RECREATE"); //overwrite existing file
