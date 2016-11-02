@@ -51,6 +51,7 @@ public:
 	Double_t Offset; // linear offset
 	Double_t Phase_Voltage; // control of phase
 	Double_t Peak_Area; // calculated online peak area
+	Double_t QcurveAmp;// Qcurve amplitude
 	Double_t Pol_Calib_Const; // calcluated polarization from TE measurement
 	Double_t Gain; // Gainsetting 0:low, 1:medium, 2:high
 	Double_t Pol_Sign;// 0 if no invert, 1 if signal is inverted
@@ -208,6 +209,8 @@ int ReadFile::MakeTree(){
 	      if(Control ==2){
 		 	 	 NMRtree->Branch("Phase_Voltage",&Phase_Voltage,"Phase_Voltage/D");
 		 	 	 NMRtree->Branch("Peak_Area",&Peak_Area,"Peak_Area/D");
+		 	 	 NMRtree->Branch("QcurveAmp",&QcurveAmp,"QcurveAmp/D");
+
 		 	 	 NMRtree->Branch("Pol_Calib_Const",&Pol_Calib_Const,"Pol_Calib_Const/D");
 		 	 	 NMRtree->Branch("Gain",&Gain,"Gain/D");
 		 	 	 NMRtree->Branch("Pol_Sign",&Pol_Sign,"Pol_Sign/D");
@@ -276,7 +279,7 @@ int ReadFile::ReadData(Int_t sign){
 
     fscanf(fp,"%lf ",&FreqStep);
     fscanf(fp,"%lf ",&ScanPoints);
-    IntScanPoints = int(ScanPoints); // need this for the memory allocation of array
+    IntScanPoints = (int)ScanPoints; // need this for the memory allocation of array
     fscanf(fp,"%lf ",&ScanNumber);
 // additional data block
     fscanf(fp,"%lf ",&Temperature);
@@ -295,6 +298,7 @@ int ReadFile::ReadData(Int_t sign){
     if(Control ==2){
 	      fscanf(fp,"%lf ",&Phase_Voltage);
 	      fscanf(fp,"%lf ",&Peak_Area);
+	      fscanf(fp,"%lf ",&QcurveAmp);
 	      fscanf(fp,"%lf ",&Pol_Calib_Const);
 	      fscanf(fp,"%lf ",&Gain);
 	      fscanf(fp,"%lf ",&Pol_Sign); // 0 if not inverted 1, if inverted
@@ -325,7 +329,8 @@ int ReadFile::ReadData(Int_t sign){
 
   	  NMR1 = new TH1D("NMR1","first NMR spectrum",ScanPoints,MinFreq,MaxFreq);
 
-// Now scan over the ascii file until we hit the end
+// Now scan over the ascii file u	      fscanf(fp,"%lf ",&QcurveAmp);
+// until we hit the end
  //rewind(fp);  // get to the beginning of the file
 
  //$$$$$$$
@@ -375,7 +380,7 @@ int ReadFile::ReadData(Int_t sign){
       fscanf(fp,"%lf ",&FreqStep);
       fscanf(fp,"%lf ",&ScanPoints);
       fscanf(fp,"%lf ",&ScanNumber);
-      IntScanPoints = int(ScanPoints); // need this for the memory allocation of array
+      IntScanPoints = (int)ScanPoints; // need this for the memory allocation of array
 
 //	        printf("%lf %d \n",ScanNumber,NumberOfSpectra);
 	      fscanf(fp,"%lf ",&Temperature);
@@ -394,6 +399,7 @@ int ReadFile::ReadData(Int_t sign){
 	      if(Control ==2){
 		      fscanf(fp,"%lf ",&Phase_Voltage);
 		      fscanf(fp,"%lf ",&Peak_Area);
+		      fscanf(fp,"%lf ",&QcurveAmp);
 		      fscanf(fp,"%lf ",&Pol_Calib_Const);
 		      fscanf(fp,"%lf ",&Gain);
 		      fscanf(fp,"%lf ",&Pol_Sign); // 0 if not inverted 1, if inverted
@@ -409,6 +415,7 @@ int ReadFile::ReadData(Int_t sign){
 
 	      	  }
 
+	      cout<<" Pressure    "<<HeP<<"   Temp  "<<HeT<<endl;
 
 
 //	       cout<< FreqCenter <<"  "<< FreqStep << " "<< ScanPoints <<" "<< ScanNumber << "\n";
@@ -507,7 +514,8 @@ int ReadFile::DrawHisto(TString HistoTitle){
 int ReadFile::ScaleHisto(Double_t scale){
 	// to scale histo grams, this will allow for changing of Qcurve subtraction
 	NMR1->Scale(scale);
-			return 0;
+			return 0;	      fscanf(fp,"%lf ",&QcurveAmp);
+
 }
 int ReadFile::WriteROOT(TString outfile){
 	//this opens a rootfile and writes content to this file
