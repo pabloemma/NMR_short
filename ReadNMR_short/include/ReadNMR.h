@@ -10,7 +10,7 @@
 
 	std::string input_file_str;  // the original NMR file
 	const char *input_file ; // character array for file open
-
+	std::string NMR_sh ="NMR_short> ";
 
 
 

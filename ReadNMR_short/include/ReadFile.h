@@ -92,6 +92,7 @@ public:
 	TFile *RootFile; // this file contains the tree
 	TTree *NMRtree; // the NMR tree
 	// Double_t *NMR_DATA; // should hold the NMR data
+	std::string NMR_sh ="NMR_short> ";
 
 
 
@@ -137,10 +138,10 @@ ReadFile::ReadFile(){
 		// this is different from the histogram file
 		//it gets automatically created and filled and has the same name
 		// as the input but with different extension .root
-      cout<<"opening file "<<input_NMR_filename<<"\n";
+      cout<<NMR_sh<<"opening file "<<input_NMR_filename<<"\n";
 	  fp = fopen(input_NMR_filename,"r");
 	   if(fp ==NULL){
-		   cout<<" Cannot find file "<<input_NMR_filename<<"  will exit \n";
+		   cout<<NMR_sh<<" Cannot find file "<<input_NMR_filename<<"  will exit \n";
 		   return 0;
 	   }
 	   // add a fowrad slash to beginning
@@ -158,10 +159,10 @@ ReadFile::~ReadFile()
 
 	   if(fp != NULL){
 		   fclose(fp);
-		   cout<<" closed file and exiting \n";
+		   cout<<NMR_sh<<" closed file and exiting \n";
 	   }
 	   else{
-		   cout<<"bye, bye now \n";
+		   cout<<NMR_sh<<"bye, bye now \n";
 	   }
 }
 
@@ -253,11 +254,11 @@ int ReadFile::ReadData(Int_t sign){
 	for(Header_Buffer=0; Header_Buffer < Header_Buffer_Length;Header_Buffer++ ){
 
 		fgets(Header_Line[Header_Buffer],100,fp);
-		cout<<"test"<<Header_Line[Header_Buffer]<<"  "<<Header_Buffer<<"\n";
+		cout<<NMR_sh<<"test"<<Header_Line[Header_Buffer]<<"  "<<Header_Buffer<<"\n";
 //		puts(Header_Line[Header_Buffer]);
 	}
 	}
-	cout<< "after string read \n";
+	cout<<NMR_sh<< "after string read \n";
     fscanf(fp,"%s",timec1);
 
     fscanf(fp,"%s",timec2);
@@ -275,7 +276,7 @@ int ReadFile::ReadData(Int_t sign){
     fscanf(fp,"%lf ",&FreqCenter);
 
  // read the first header to get all the pertinent info
- //   cout<<FreqCenter<<"\n";
+ //   cout<<NMR_sh<<FreqCenter<<"\n";
 
     fscanf(fp,"%lf ",&FreqStep);
     fscanf(fp,"%lf ",&ScanPoints);
@@ -314,7 +315,7 @@ int ReadFile::ReadData(Int_t sign){
 
     	  }
 
- //   cout<< FreqCenter <<"  "<< FreqStep << " "<< ScanPoints <<" "<< ScanNumber << "\n";
+ //   cout<<NMR_sh<< FreqCenter <<"  "<< FreqStep << " "<< ScanPoints <<" "<< ScanNumber << "\n";
 
 // histo limits
  Double_t MinFreq = FreqCenter - (ScanPoints-1)/2 * FreqStep;
@@ -415,10 +416,9 @@ int ReadFile::ReadData(Int_t sign){
 
 	      	  }
 
-	      cout<<" Pressure    "<<HeP<<"   Temp  "<<HeT<<endl;
 
 
-//	       cout<< FreqCenter <<"  "<< FreqStep << " "<< ScanPoints <<" "<< ScanNumber << "\n";
+//	       cout<<NMR_sh<< FreqCenter <<"  "<< FreqStep << " "<< ScanPoints <<" "<< ScanNumber << "\n";
       array.clear();  // so we do not create a long array, set everything to zero length
        for(Int_t loop = 0; loop<ScanPoints+1 ; loop++){
       	fscanf(fp," %lf",&Amplitude);
@@ -455,9 +455,9 @@ else
 	   cout << "read in spectra :"<<NumberOfSpectra << "    stored spectra :"<< ScanNumber<<"\n";
  }
  Norm = FreqStep/NumberOfSpectra;
- cout<<"Norm "<<Norm<<"\n";
+ cout<<NMR_sh<<"Norm "<<Norm<<"\n";
  // here we average spectrum over number of sweeps
- cout<<"averaging spectra \n";
+ cout<<NMR_sh<<"averaging spectra \n";
 
  NMR1->Scale(1./NumberOfSpectra);
 
@@ -471,7 +471,7 @@ TString ReadFile::GetDate(TString input) {
     time_t time_test = timestring.Atoi()-2082844800; // calculated with offset since stupid labview uses jan-1-1904
     tm *ltm = localtime(&time_test);          //and unix uses jan-1-1970
 
-    cout<<" \n \n ******************************************\n\n";
+    cout<<NMR_sh<<" \n \n ******************************************\n\n";
     cout << "Year: "<< 1900 + ltm->tm_year << endl;
        cout << "Month: "<< 1 + ltm->tm_mon<< endl;
        cout << "Day: "<<  ltm->tm_mday << endl;
@@ -479,12 +479,12 @@ TString ReadFile::GetDate(TString input) {
        cout << 1 + ltm->tm_min << ":";
        cout << 1 + ltm->tm_sec << endl;
 
-      cout<<asctime(ltm)<<"  "<<time_test<<"   "<<"    \n";
-      cout<<" \n \n ******************************************\n\n";
+      cout<<NMR_sh<<asctime(ltm)<<"  "<<time_test<<"   "<<"    \n";
+      cout<<NMR_sh<<" \n \n ******************************************\n\n";
       if(Int_t(time_test) > 1465948800 && Int_t(time_test) <= 1468972800 ) Control =1; // this gives a control value for which time the polarization file is from
       if(Int_t(time_test) > 1468972800 ) Control =2; // this gives a control value for which time the polarization file is from
 
-      cout<<" control next"<<Control<<"\n";
+      cout<<NMR_sh<<" control next"<<Control<<"\n";
   	// this header is for controlling the header buffer length
   	switch (Control)
   	{
