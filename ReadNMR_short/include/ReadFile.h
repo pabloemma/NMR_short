@@ -191,6 +191,7 @@ int ReadFile::MakeTree(){
 	 	 NMRtree->Branch("Temperature",&Temperature,"Temperature/D");
 
 	 	 NMRtree->Branch("ScanPoints",&ScanPoints,"ScanPoints/D");
+	 	 NMRtree->Branch("ScanNumber",&ScanNumber,"ScanNumber/D");
 
 	 	 NMRtree->Branch("TuneV",&TuneV,"TuneV/D");
 
