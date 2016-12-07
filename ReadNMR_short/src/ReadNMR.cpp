@@ -219,7 +219,7 @@ if(OS =="WIN") {
 	//input_NMR_filename = "/Users/klein/NMR/pol_measurements/NMR3533139761.xls"; // read in the string, stupid C++ needs double quote
         Int_t *argc1;
 	    TApplication *theApp = new TApplication("theApp",&argc,argv);  // problem with the two commandline args getting in conflict
-		theApp->GetOptions(&argc,argv);
+//		theApp->GetOptions(&argc,argv);
 
 		if(MYDEBUG){
 				cout <<"this is the input file    "<<input_NMR_filename<<" \n";

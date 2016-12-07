@@ -508,7 +508,7 @@ int ReadFile::DrawHisto(TString HistoTitle){
 	// this routine should handle the drawings
 	myCanvas = new TCanvas("myCanvas","NMR",100,100,800,600);
 	NMR1->SetTitle(HistoTitle);
-	NMR1->Draw();
+	NMR1->Draw("HIST P");
 	myCanvas->Update();
 	return 0;
 }

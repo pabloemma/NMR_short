@@ -2,7 +2,7 @@ src/ReadNMR.d: ../src/ReadNMR.cpp \
   /Users/klein/git/NMR_short/ReadNMR_short/include/ReadFile.h \
   /Users/klein/root_all/include/TROOT.h \
   /Users/klein/root_all/include/TDirectory.h \
-  /Users/klein/root_all/include/TNamed.h \
+  /Users/klein/root_all/include/TBuffer.h \
   /Users/klein/root_all/include/TObject.h \
   /Users/klein/root_all/include/Rtypes.h \
   /Users/klein/root_all/include/RtypesCore.h \
@@ -17,7 +17,7 @@ src/ReadNMR.d: ../src/ReadNMR.cpp \
   /Users/klein/root_all/include/TStorage.h \
   /Users/klein/root_all/include/TVersionCheck.h \
   /Users/klein/root_all/include/Riosfwd.h \
-  /Users/klein/root_all/include/TBuffer.h \
+  /Users/klein/root_all/include/TNamed.h \
   /Users/klein/root_all/include/TString.h \
   /Users/klein/root_all/include/TMathBase.h \
   /Users/klein/root_all/include/RStringView.h \
@@ -100,7 +100,7 @@ src/ReadNMR.d: ../src/ReadNMR.cpp \
 
 /Users/klein/root_all/include/TDirectory.h:
 
-/Users/klein/root_all/include/TNamed.h:
+/Users/klein/root_all/include/TBuffer.h:
 
 /Users/klein/root_all/include/TObject.h:
 
@@ -130,7 +130,7 @@ src/ReadNMR.d: ../src/ReadNMR.cpp \
 
 /Users/klein/root_all/include/Riosfwd.h:
 
-/Users/klein/root_all/include/TBuffer.h:
+/Users/klein/root_all/include/TNamed.h:
 
 /Users/klein/root_all/include/TString.h:
 
