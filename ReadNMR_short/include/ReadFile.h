@@ -363,10 +363,10 @@ int ReadFile::ReadData(Int_t sign){
 	      // now remove the . if there is one, concatenate the times, we have now down to 100 musecs involved
 	      Int_t point_pos2 = time2.find(".");
 	      Int_t point_pos1 = time1.find(".");
-	      time2.erase(point_pos2,point_pos2+1);
+	      time2.erase(point_pos2,1);
 	      time1.erase(point_pos1); // problem due to stupid string read in stripped it at 10 position
 	      std::string time_help= time1+time2;
-	      cout<<" converting time"<<time_help<<"  "<<time1<<"   "<<time2<<endl;
+	      //cout<<" converting time"<<time_help<<"  "<<time1<<"   "<<time2<<endl;
 	      timel = std::stol(time_help); // Time base converted to UNIX time
 
 
