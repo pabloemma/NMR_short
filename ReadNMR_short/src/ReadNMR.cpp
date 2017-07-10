@@ -220,7 +220,7 @@ if(OS =="WIN") {
         Int_t *argc1;
 
 // set batch to true
-        batch=true;
+        batch=false;
 
         TApplication *theApp = new TApplication("theApp",&argc,argv);  // problem with the two commandline args getting in conflict
 

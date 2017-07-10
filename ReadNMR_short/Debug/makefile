@@ -44,7 +44,7 @@ all: ReadNMR_short
 ReadNMR_short: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross G++ Linker'
-	g++ -v -L/Users/klein/root_all/lib -L/usr/lib `/Users/klein/root_all/bin/root-config --libs` -Xlinker -rpath /Users/klein/root_all/lib -o "ReadNMR_short" $(OBJS) $(USER_OBJS) $(LIBS)
+	g++ -v -L/home/klein/root_all/lib -L/usr/lib `/home/klein/root_all/bin/root-config --libs` -Xlinker -rpath /home/klein/root_all/lib -o "ReadNMR_short" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -54,6 +54,5 @@ clean:
 	-@echo ' '
 
 .PHONY: all clean dependents
-.SECONDARY:
 
 -include ../makefile.targets

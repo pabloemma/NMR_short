@@ -17,7 +17,7 @@ CPP_DEPS += \
 src/ReadNMR.o: ../src/ReadNMR.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cross G++ Compiler'
-	g++ -I/Users/klein/root_all/include -I"/Users/klein/git/NMR_short/ReadNMR_short/include" -O0 -g3 -ggdb -pg -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"$(@:%.o=%.d)" -MT"src/ReadNMR.d" -o "$@" "$<"
+	g++ -I/home/klein/root_all/include -I"/home/klein/git/NMR_short/ReadNMR_short/include" -O0 -g3 -ggdb -pg -Wall -c -fmessage-length=0 -std=gnu++11 -fPIC -MMD -MP -MF"$(@:%.o=%.d)" -MT"src/ReadNMR.d" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
