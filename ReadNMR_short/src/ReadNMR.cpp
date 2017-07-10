@@ -89,10 +89,6 @@ int main(Int_t argc,char *argv[],char *envp[] ) {
 		switch (c)
 
 		{
-			case 'f' :
-				cout<<"optarg"<<string(optarg)<<"\n";
-				globalArgs.FitFunction = string(optarg) ;
-				cout<<" FitFunction chosen  " << globalArgs.FitFunction <<"\n";
 
 
 				break;
@@ -107,11 +103,6 @@ int main(Int_t argc,char *argv[],char *envp[] ) {
 				//datestring = globalArgs.input;
 				cout<<" Input file "<<globalArgs.input<<"\n";
 
-				break;
-			case 'z' :
-				globalArgs.background = string(optarg) ;
-				bck = true;
-				cout<<" Background run "<<globalArgs.background<<"\n";
 				break;
 			case 'y' :
 				globalArgs.uvafile = string(optarg) ;
@@ -129,6 +120,13 @@ int main(Int_t argc,char *argv[],char *envp[] ) {
 				cout<<"test option \n";
 				globalArgs.data_directory = optarg ;
 				cout<<" Data Directory "<<globalArgs.data_directory<<"   opt arg "<<optarg<<"\n";
+
+				break;
+			case 'z' :
+				cout<<"sleep time \n";
+				globalArgs.sleep_time = optarg ;
+				cout<<" sleep time "<<globalArgs.sleep_time<<"   opt arg "<<optarg<<"\n";
+				sleepy = atoi(globalArgs.sleep_time.c_str());
 
 				break;
 			case 'o' :
@@ -191,24 +189,6 @@ int main(Int_t argc,char *argv[],char *envp[] ) {
 
     } // end OSX block
 
-if(OS =="WIN") {
-    int count;
-
-    // Display each command-line argument.
-    cout << "\nCommand-line arguments:\n";
-    for( count = 0; count < argc; count++ )
-    {
-    	cout << "  argv[" << count << "]   "
-                << argv[count] << "\n";
-    	if(argv[count] == "-i") input_NMR_filename = argv[count+1];
-       	if(argv[count] == "-f") globalArgs.FitFunction = argv[count+1];
-       	if(argv[count] == "-s") globalArgs.sign= argv[count+1];
-
-    }
-
-
-
-}// end WIN
 
 // deal with the global arguments
 		if(globalArgs.sign == "neg") signal_sign=-1;
@@ -220,7 +200,7 @@ if(OS =="WIN") {
         Int_t *argc1;
 
 // set batch to true
-        batch=false;
+        batch=true;
 
         TApplication *theApp = new TApplication("theApp",&argc,argv);  // problem with the two commandline args getting in conflict
 
@@ -253,7 +233,12 @@ if(OS =="WIN") {
     break;
     }
 */
-    if(!batch)RF.DrawHisto("Foreground"); // draw histo from ReadDAta
+    if(sleepy != 0){
+       RF.DrawHisto("Foreground"); // draw histo from ReadDAta
+       // now wait for 5 seconds, to give a chance for the plot
+       sleep(sleepy);
+    }
+    //if(!batch)RF.DrawHisto("Foreground"); // draw histo from ReadDAta
 
     //RF.CloseFile();
 

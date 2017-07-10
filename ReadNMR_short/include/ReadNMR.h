@@ -24,6 +24,7 @@
 		std::string background ; /* indicating his to be a backgroun run */
 		std::string scale ;
 		std::string outfile ;  //root format outputfile
+		std::string sleep_time ;  //how long to display the histo in seconds
 		std::string dummy; // for batch argument
 
 	}globalArgs ; // currently only the gaus or lorentzian, defaults to gauss
@@ -31,6 +32,7 @@
 	Int_t c;
 	Int_t loop;
 	Int_t read_control;
+	Int_t sleepy =0; // how long the display is on in seconds; 0 no display
 	Bool_t bck;
 	Bool_t batch; // for batch operation
 	Bool_t UVa; // to control that we have a UVa file

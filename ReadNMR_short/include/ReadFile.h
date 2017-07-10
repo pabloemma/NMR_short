@@ -510,6 +510,9 @@ int ReadFile::DrawHisto(TString HistoTitle){
 	myCanvas = new TCanvas("myCanvas","NMR",100,100,800,600);
 	NMR1->SetTitle(HistoTitle);
 	NMR1->Draw("HIST P");
+
+	NMR1->Write(); // write the raw histo into the new root file
+
 	myCanvas->Update();
 	return 0;
 }
