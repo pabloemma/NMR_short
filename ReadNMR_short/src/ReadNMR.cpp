@@ -13,6 +13,14 @@
 #include <ctime> // to manipulate time
 #include <stdlib.h>
 #include  <vector>
+#include <sys/types.h>
+
+#include <sys/stat.h>
+
+#include <pwd.h>
+#include <dirent.h>
+
+
 
 #include <iostream>
 #include "ReadFile.h"
@@ -171,7 +179,14 @@ int main(Int_t argc,char *argv[],char *envp[] ) {
    	directory = "/"+globalArgs.data_directory; // since getopt cannot handle forward slash
     }
     else {
-    	 directory = "/Users/klein/NMR/pol_measurements/";
+    		//get home directory
+    		const char *homedir;
+    		;
+    		if ((homedir = getenv("HOME")) == NULL) {
+    			homedir = getpwuid(getuid())->pw_dir;
+    		}
+        std::string str_tem(homedir);
+    	directory = str_tem+"/NMR/pol_measurements/";
     }
 
      //TString file_start ="TEQ";
@@ -181,7 +196,25 @@ int main(Int_t argc,char *argv[],char *envp[] ) {
 
      outputfilename = in_src+ outputend;
      inputfilename = in_src + inputend;
-     rootfile = directory+"/root/"+globalArgs.input + rootend; //this is the rootfile containg the tree
+     RootDirectory = directory+"/root/";
+    // Check if root directory exists
+    		 // if not create it
+    		 DIR* dir = opendir(RootDirectory);
+    		 if (dir)
+    		 {
+    		     /* Directory exists. */
+    		     closedir(dir);
+    		 }
+    		 else if (dir == NULL)
+    		 {
+    			 cout<< "Creating new directory---------------- " <<RootDirectory<<endl;
+
+    		  mkdir(RootDirectory,0755) ;
+    		 }
+
+
+
+     rootfile = RootDirectory+globalArgs.input + rootend; //this is the rootfile containg the tree
 
 	 input_NMR_filename =inputfilename;
 

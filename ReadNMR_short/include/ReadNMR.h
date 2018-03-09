@@ -53,6 +53,7 @@
 	TString outputend =".dat"; //file with result parameter from this fitting
 	TString rootend = ".root"; //Root file of the NMR spectra
 	TString rootfile ;
+	TString RootDirectory ;
 	TString input_NMR_filename ;
 	TString output_root_filename ;
 	TString output_NMR_filename ;
