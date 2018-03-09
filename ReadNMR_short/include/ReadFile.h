@@ -263,6 +263,7 @@ int ReadFile::ReadData(Int_t sign){
     fscanf(fp,"%s",timec1);
 
     fscanf(fp,"%s",timec2);
+
     time1=string(timec1);
     time2=string(timec2);
     // now remove the . if there is one, concatenate the times, we have now down to 100 musecs involved
@@ -424,7 +425,8 @@ int ReadFile::ReadData(Int_t sign){
       array.clear();  // so we do not create a long array, set everything to zero length
        for(Int_t loop = 0; loop<ScanPoints+1 ; loop++){
       	fscanf(fp," %lf",&Amplitude);
-      	array.push_back(Amplitude);  //put signal into vector
+	      	array.push_back(Amplitude);  //put signal into vector
+//  	      	array.push_back(Amplitude*-1.);  //put signal into vector
 
       	Amplitude = Amplitude * sign; // to take care of negative signal
 

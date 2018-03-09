@@ -84,7 +84,7 @@ int main(Int_t argc,char *argv[],char *envp[] ) {
 
 
     //Do not use b option since that suppresses root application drawing
-	while((   c = getopt(argc,argv,"f:t:k:i:z:y:s:u:b:o:h")) != -1){
+	while((   c = getopt(argc,argv,"f:t:d:i:z:y:s:u:b:o:h")) != -1){
 		cout<<char(c)<<"\n";
 		switch (c)
 
@@ -116,7 +116,7 @@ int main(Int_t argc,char *argv[],char *envp[] ) {
 				if(globalArgs.sign == "neg") signal_sign=-1;
 
 				break;
-			case 'k' :
+			case 'd' :
 				cout<<"test option \n";
 				globalArgs.data_directory = optarg ;
 				cout<<" Data Directory "<<globalArgs.data_directory<<"   opt arg "<<optarg<<"\n";
@@ -150,9 +150,11 @@ int main(Int_t argc,char *argv[],char *envp[] ) {
 				break;
 
 			case '?' :
-				fprintf(stderr,"unknown option `\\x%x'.\n",optopt);
-				fprintf(stderr,"use -f  gaus,lor\n");
-				break;
+				////fprintf(stderr,"unknown option `\\x%x'.\n",optopt);
+				//fprintf(stderr,"use -f  gaus,lor\n");
+				cout<<" You probaly want to use -d for the input data directory and -i for the file "<<endl;
+				cout<<" I leave now so you can figure it out"<<endl;
+				exit(1);
 			default:
 				globalArgs.FitFunction = "gaus";
 				break;
